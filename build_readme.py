@@ -8,7 +8,7 @@ def fetch_blog_entries():
         {
             "title": entry.title,
             "url": entry.link,
-            "published": entry.pubDate.split("T")[0],
+            "published": datetime.strptime(entry["published"], "%a, %d %b %Y %H:%M:%S %Z").strftime("%Y-%m-%d"),
         }
         for entry in entries[:5]
     ]
