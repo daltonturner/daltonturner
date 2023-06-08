@@ -6,8 +6,8 @@ def fetch_blog_entries():
     entries = feedparser.parse("https://daltonturner.xyz/feed.xml")["entries"]
     return [
         {
-            "title": entry["title"],
-            "url": "https://daltonturner.xyz" + entry["link"],
+            "title": entry.title,
+            "url": entry.link,
             "published": datetime.strptime(entry["published"], "%a, %d %b %Y %H:%M:%S %Z").strftime("%Y-%m-%d"),
         }
         for entry in entries[:5]
