@@ -4,7 +4,7 @@ from datetime import datetime
 
 def fetch_blog_entries():
     entries = feedparser.parse("https://daltonturner.xyz/feed.xml")["entries"]
-        return [
+    return [
         {
             "title": entry.title,
             "url": entry.link,
