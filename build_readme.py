@@ -4,11 +4,11 @@ from datetime import datetime
 
 def fetch_blog_entries():
     entries = feedparser.parse("https://daltonturner.xyz/feed.xml")["entries"]
-    return [
+        return [
         {
-            "title": entry["title"],
-            "url": "https://daltonturner.xyz" + entry["link"],
-            "published": datetime.strptime(entry["published"], "%a, %d %b %Y %H:%M:%S %Z").strftime("%Y-%m-%d"),
+            "title": entry.title,
+            "url": entry.link,
+            "published": entry.pubDate.split("T")[0],
         }
         for entry in entries[:5]
     ]
